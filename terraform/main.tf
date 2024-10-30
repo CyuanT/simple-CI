@@ -13,10 +13,6 @@ resource "aws_s3_bucket" "ce7-ty-ci" {
   bucket        = "ce7-ty-simple-ci"
   force_destroy = true
 
-  versioning_configuration {
-    status = "Enabled"
-  }
-
   lifecycle_rule {
     enabled = true
     id      = "expire"
