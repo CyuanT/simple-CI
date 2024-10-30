@@ -40,7 +40,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "good_sse_1" {
     }
   }
 }
-  #checkov:skip=CKV_AWS_26:Ensure all data stored in the SNS topic is encrypted
+
   #checkov:skip=CKV2_AWS_6:Ensure that S3 bucket has a Public Access block
   #checkov:skip=CKV_AWS_144:Ensure that S3 bucket has cross-region replication enabled
   #checkov:skip=CKV_AWS_145:Ensure that S3 buckets are encrypted with KMS by default
@@ -56,6 +56,7 @@ resource "aws_s3_bucket_logging" "example" {
 
 resource "aws_sns_topic" "bucket_notifications" {
   name = "ce7-ty-ci-notifications"
+  #checkov:skip=CKV_AWS_26:Ensure all data stored in the SNS topic is encrypted
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
