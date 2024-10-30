@@ -35,7 +35,7 @@ resource "aws_s3_bucket" "ce7-ty-ci" {
 resource "aws_s3_bucket_logging" "example" {
   bucket = aws_s3_bucket.ce7-ty-ci.id
 
-  target_bucket = aws_s3_bucket.log_bucket.id
+  target_bucket = aws_s3_bucket.ce7-ty-ci.id
   target_prefix = "log/"
 }
 
@@ -54,7 +54,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
   }
 }
 
-resource "aws_s3_bucket_versioning" "example" {
+resource "aws_s3_bucket_lifecyctle_versioning" "example" {
   bucket = aws_s3_bucket.ce7-ty-ci.id
 
   versioning_configuration {
