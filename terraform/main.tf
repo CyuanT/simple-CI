@@ -59,7 +59,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "example" {
 
   rule {
     id = "rule-1"
-    filter {}
+    filter {
+        prefix = "logs/"
+    }
     status = "Enabled"
   }
 }
