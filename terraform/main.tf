@@ -29,7 +29,6 @@ resource "aws_s3_bucket" "ce7-ty-ci" {
   versioning_configuration {
     status = "Enabled"
   }
-  }
 
   #checkov:skip=CKV2_AWS_6:Ensure that S3 bucket has a Public Access block
   #checkov:skip=CKV_AWS_144:Ensure that S3 bucket has cross-region replication enabled
