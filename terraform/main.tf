@@ -13,6 +13,10 @@ resource "aws_s3_bucket" "ce7-ty-ci" {
   bucket        = "ce7-ty-simple-ci"
   force_destroy = true
 
+  versioning_configuration {
+    status = "Enabled"
+  }
+
   lifecycle_rule {
     enabled = true
     id      = "expire"
@@ -24,10 +28,6 @@ resource "aws_s3_bucket" "ce7-ty-ci" {
     expiration {
       days = 90
     }
-  }
-
-  versioning_configuration {
-    status = "Enabled"
   }
 
   #checkov:skip=CKV2_AWS_6:Ensure that S3 bucket has a Public Access block
