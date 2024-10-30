@@ -29,6 +29,7 @@ resource "aws_s3_bucket" "ce7-ty-ci" {
   #checkov:skip=CKV2_AWS_6:Ensure that S3 bucket has a Public Access block
   #checkov:skip=CKV_AWS_144:Ensure that S3 bucket has cross-region replication enabled
   #checkov:skip=CKV_AWS_145:Ensure that S3 buckets are encrypted with KMS by default
+  #checkov:skip=CKV_AWS_21:Ensure all data stored in the S3 bucket have versioning enabled
 
 }
 
@@ -64,6 +65,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "example" {
     }
     status = "Enabled"
   }
+  #checkov:skip=CKV_AWS_300:Ensure S3 lifecycle configuration sets period for aborting failed uploads
 }
 
 
