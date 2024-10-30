@@ -15,8 +15,8 @@ resource "aws_s3_bucket" "ce7-ty-ci" {
 
   lifecycle_rule {
     enabled = true
-    id     = "expire"
-    prefix = "logs/"
+    id      = "expire"
+    prefix  = "logs/"
     transition {
       days          = 30
       storage_class = "STANDARD_IA"
