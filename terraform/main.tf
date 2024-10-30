@@ -54,7 +54,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
   }
 }
 
-resource "aws_s3_bucket_lifecyctle_versioning" "example" {
+resource "aws_s3_bucket_lifecycle_versioning" "example" {
   bucket = aws_s3_bucket.ce7-ty-ci.id
 
   versioning_configuration {
