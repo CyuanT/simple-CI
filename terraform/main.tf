@@ -14,9 +14,9 @@ resource "aws_s3_bucket" "ce7-ty-ci" {
   force_destroy = true
 
   lifecycle_rule {
-    id      = "expire"
-    status  = "Enabled"
-    prefix  = "logs/"
+    id     = "expire"
+    status = "Enabled"
+    prefix = "logs/"
     transition {
       days          = 30
       storage_class = "STANDARD_IA"
@@ -30,16 +30,16 @@ resource "aws_s3_bucket" "ce7-ty-ci" {
     status = "Enabled"
   }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "good_sse_1" {
-  bucket = aws_s3_bucket.ce7-ty-ci.bucket
+  resource "aws_s3_bucket_server_side_encryption_configuration" "good_sse_1" {
+    bucket = aws_s3_bucket.ce7-ty-ci.bucket
 
-  rule {
-    apply_server_side_encryption_by_default {
-      kms_master_key_id = aws_kms_key.mykey.arn
-      sse_algorithm     = "aws:kms"
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.mykey.arn
+        sse_algorithm     = "aws:kms"
+      }
     }
   }
-}
 
   #checkov:skip=CKV2_AWS_6:Ensure that S3 bucket has a Public Access block
   #checkov:skip=CKV_AWS_144:Ensure that S3 bucket has cross-region replication enabled
